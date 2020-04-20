@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\models\Governorate;
 use Illuminate\Support\Facades\Auth;
 use App\models\city;
+use App\models\Setting;
 
 
 
@@ -31,4 +32,12 @@ class MainController extends Controller
         })->get();
         return responsejson(1,'success',$cities);
     }
+
+    public function setting()
+    {
+        $setting = Setting::all();
+        return responsejson(1,'success',$setting);
+    }
+
+
 }

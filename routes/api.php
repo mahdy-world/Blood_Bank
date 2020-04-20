@@ -18,8 +18,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
     Route::group(['prefix' => 'v1' , 'namespace' => 'Api'], function () {
 
+        //Main Controller 
         Route::get('governorates', 'MainController@governorates');
         Route::get('cities', 'MainController@cities');
+        Route::get('setting', 'MainController@setting');
+
+        //Auth Controller 
+        Route::post('sign_up','AuthController@sign_up');
         
     });
 

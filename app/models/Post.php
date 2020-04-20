@@ -8,7 +8,7 @@ class Post extends Model {
 
 	protected $table = 'posts';
 	public $timestamps = true;
-	protected $fillable = array('title', 'content', 'image', 'category_id');
+	protected $fillable = array('id','title', 'content', 'image', 'category_id');
     protected $appends = ['is_favourite'];
 
     public function getIsFavouriteAttribute()
