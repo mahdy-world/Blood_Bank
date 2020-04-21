@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+
 use App\models\Client;
 
 class AuthController extends Controller
@@ -39,5 +41,36 @@ class AuthController extends Controller
             'client'=>'$client'
         ]);
 
+    }
+
+    public function login(Request $request)
+    {
+        $validator = validator()->make($request->all(),[
+            'email' => 'required',
+            'password'=>'required'
+        ]);
+
+        if($validator->fails()){
+
+            return responsjson(0,$validator->errors()->first(),$validator->errors());
+        }
+
+        $client = Client::where('email',$request->email)->first();
+
+        if($client){
+
+            if(Hash::check($request->password, $client->password))
+            {
+                return responsejson(1,'تم التسجيل بنجاح',[
+                    'api_token'=>$client->api_token ,
+                    'client'=>$client
+                ]);
+            }else {
+                return responsjson(0,'بيانات غير صحيحة');
+            }
+
+        }else{
+            return responsejson(0,'بيانات غير صحيحة');
+        }
     }
 }
