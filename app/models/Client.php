@@ -11,7 +11,7 @@ class Client extends Authenticatable {
     use Notifiable;
 	protected $table = 'clients';
 	public $timestamps = true;
-	protected $fillable = array('name', 'email', 'date_of_birth', 'brood_type_id', 'city_id', 'last_donation_data',
+	protected $fillable = array('name', 'email', 'date_of_birth', 'blood_type_id', 'city_id', 'last_donation_data',
         'number_phone', 'password', 'pin_code', 'is_active');
 //    protected $appends = ['is_favourite'];
 	
