@@ -15,7 +15,7 @@ return [
     |            "sparkpost", "postmark", "log", "array"
     |
     */
-
+        
     'driver' => env('MAIL_DRIVER', 'smtp'),
 
     /*
@@ -56,10 +56,11 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'bloodbanktest8@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'ahmed medo'),
     ],
 
+    
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol

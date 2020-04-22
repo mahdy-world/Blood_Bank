@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\ResetPassword;
+use Illuminate\Support\Facades\Mail;
 
 use App\models\Client;
 
@@ -71,6 +73,47 @@ class AuthController extends Controller
 
         }else{
             return responsejson(0,'بيانات غير صحيحة');
+        }
+    }
+
+    public function resetpassword(Request $request)
+    {
+        $validator = validator()->make($request->all(),[
+            'number_phone' => 'required'
+        ]);
+
+        if($validator->fails())
+        {
+            return responsejson(0,$validator->errors()->first(),$validator->errors());
+        }
+
+        $user = Client::where('number_phone',$request->number_phone)->first();
+        if($user){
+            $code = rand(1111,9999);
+            $update = $user->update(['pin_code' => $code]);
+
+            if($update)
+            {
+                //send sms
+               // smsMisr($request->phone,"كود اعادة كلمة السر ".$code);
+
+                //send email
+                Mail::to($user->email)
+                ->bcc("mmos7239@gmail.com")
+                ->send(new Resetpassword($code));
+                return responsejson(1,'برجاء فحص الهاتف',
+                [
+                    'pin_code' => $code,
+                    'mail_fails' =>Mail::failures(),
+                    'email' => '$user->email'
+                
+                ]);
+            }else{
+                return responsejson(0,'حدث خطأ حاول مرة اخري ');
+            }
+
+        }else{
+            return responsejson(0,'حدث خطأ حاول مرة اخري ');
         }
     }
 }
