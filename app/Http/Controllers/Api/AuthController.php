@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Mail\ResetPassword;
 use Illuminate\Support\Facades\Mail;
-
+use App\Models\Token;
 use App\models\Client;
 
 class AuthController extends Controller
@@ -68,13 +68,15 @@ class AuthController extends Controller
                     'client'=>$client
                 ]);
             }else {
-                return responsjson(0,'بيانات غير صحيحة');
+                return responsejson(0,'بيانات غير صحيحة');
             }
 
         }else{
             return responsejson(0,'بيانات غير صحيحة');
         }
     }
+
+
 
     public function resetpassword(Request $request)
     {
@@ -115,5 +117,72 @@ class AuthController extends Controller
         }else{
             return responsejson(0,'حدث خطأ حاول مرة اخري ');
         }
+    }
+
+    public function newpassword(Request $request)
+    {
+        $validator = validator()->make($request->all(),
+        [
+            'pin_code' => 'required',
+            'password' =>'required|confirmed',
+            'number_phone' => 'required'
+        ]);
+
+        if($validator->fails()){
+            return responsejson(0,$validator->errors()->first(),$validator->errors());
+        }
+
+        $user = Client::where('pin_code',$request->pin_code)->where('pin_code','!=',0)
+        ->where('number_phone',$request->number_phone)->first();
+        
+        if($user)
+        {
+            $user ->password = bcrypt($request->password);
+            $user ->pin_code = null;
+
+            if($user->save())
+            {
+                return responsejson(1,'تم تغير كلمة السر بنجاح');
+            }else{
+                return responsejson(0,'حدث خطأ حاول مرة اخري');
+            }
+    
+        }else{
+            return responsejson(1,'هذا الكود غير صحيح');
+        }
+
+       
+    }
+
+    public function registerToken(Request $request)
+    {
+        $validator = validator()->make($request->all(),
+        [
+            'token' => 'required',
+            'platform' => 'required|in:android,ios'
+        ]);
+        if($validator->fails()){
+            return responsjson(0,$validator->errors()->first(),$validator->errors());
+        }
+        Token::where('token',$request->token)->delete();
+        $request->user()->tokens()->create($request->all());
+        return responseJson(1,'تم التسجيل بنجاح');
+        
+    }
+
+    public function removeToken(Request $request)
+    {
+        $validator = validator()->make($request->all(),
+        [
+            'token' => 'required'
+        ]);
+
+        if($validator->fails()){
+            return responsjson(0,$validator->errors()->first(),$validator->errors());
+
+        }
+
+        Token::where('token',$request->token)->delete();
+        return responsjson(1,'تم الحذف بنجاح ');
     }
 }

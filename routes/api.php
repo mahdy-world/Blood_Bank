@@ -27,6 +27,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
         Route::post('register','AuthController@register');
         Route::post('login','AuthController@login');
         Route::post('resetpassword','AuthController@resetpassword');
+        Route::post('newpassword','AuthController@newpassword');
+
+        Route::group(['middleware' => 'auth:api'],function(){
+
+            Route::post('register_token','AuthController@registerToken');
+            Route::post('remove_token','AuthController@removeToken');
+        });
         
     });
 
