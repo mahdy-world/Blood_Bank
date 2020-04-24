@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use App\Mail\ResetPassword;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\ResetPassword;
 use App\Models\Token;
 use App\models\Client;
 

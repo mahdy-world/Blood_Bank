@@ -8,6 +8,7 @@ use App\models\Governorate;
 use Illuminate\Support\Facades\Auth;
 use App\models\city;
 use App\models\Setting;
+use App\models\Contact;
 
 
 
@@ -37,6 +38,31 @@ class MainController extends Controller
     {
         $setting = Setting::all();
         return responsejson(1,'success',$setting);
+    }
+
+    public function contact(Request $request)
+    {
+        $validator = validator()->make($request->all(),[
+            'name'  => 'required',
+            'email' => 'required',
+            'title' => 'required',
+            'message' => 'required',
+            'number_phone' => 'required'
+
+        ]);
+
+        if($validator->fails()){
+
+            return responsejson(0,$validator->errors()->first(),$validator->errors());
+
+        }
+
+        $contact = Contact::create($request->all());
+        $contact->save();
+        return responsejson(1,'تم الارسال بنجاح',[
+            'contact' => $contact
+        ]) ;
+
     }
 
 

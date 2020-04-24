@@ -31,6 +31,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
         Route::group(['middleware' => 'auth:api'],function(){
 
+            Route::post('contact','MainController@contact');
+
+
+
             Route::post('register_token','AuthController@registerToken');
             Route::post('remove_token','AuthController@removeToken');
         });
