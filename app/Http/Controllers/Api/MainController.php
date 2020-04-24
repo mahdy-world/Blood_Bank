@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use App\models\city;
 use App\models\Setting;
 use App\models\Contact;
+use App\models\Category;
+use App\models\Notification;
+
 
 
 
@@ -69,6 +72,13 @@ class MainController extends Controller
     {
         $categories = Category::paginate(10);
         return responsejson(1,'success',$categories);
+    }
+
+
+    public function notifications()
+    {
+        $notifications = Notification::paginate(10);
+        return responsejson(1,'success',$notifications);
     }
 
 

@@ -30,7 +30,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
         Route::post('newpassword','AuthController@newpassword');
 
         Route::group(['middleware' => 'auth:api'],function(){
-            Route::git('categories','MainController@categories');
+            Route::get('categories','MainController@categories');
+            Route::get('notifications','MainController@notifications');
 
             Route::post('contact','MainController@contact');
 
