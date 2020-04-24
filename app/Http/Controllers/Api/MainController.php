@@ -65,5 +65,11 @@ class MainController extends Controller
 
     }
 
+    public function categories()
+    {
+        $categories = Category::paginate(10);
+        return responsejson(1,'success',$categories);
+    }
+
 
 }

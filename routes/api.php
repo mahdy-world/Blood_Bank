@@ -30,6 +30,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
         Route::post('newpassword','AuthController@newpassword');
 
         Route::group(['middleware' => 'auth:api'],function(){
+            Route::git('categories','MainController@categories');
 
             Route::post('contact','MainController@contact');
 
@@ -37,6 +38,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
             Route::post('register_token','AuthController@registerToken');
             Route::post('remove_token','AuthController@removeToken');
+            
         });
         
     });
