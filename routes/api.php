@@ -28,7 +28,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
         Route::post('login','AuthController@login');
         Route::post('resetpassword','AuthController@resetpassword');
         Route::post('newpassword','AuthController@newpassword');
-
+       
         Route::group(['middleware' => 'auth:api'],function(){
             Route::get('categories','MainController@categories');
             Route::get('notifications','MainController@notifications');
@@ -37,7 +37,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
             Route::post('contact','MainController@contact');
             Route::post('register_token','AuthController@registerToken');
             Route::post('remove_token','AuthController@removeToken');
-            
+            Route::post('profiledit','MainController@profiledit');
+
         });
         
     });

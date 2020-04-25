@@ -142,5 +142,34 @@ class MainController extends Controller
                 
     }
 
+    public function profiledit(Request $request)
+    {
+
+        $validator = validator()->make($request->all(),[
+            'name' => 'required',
+            'email' => 'required|email|unique:clients,email,' . $request->user()->id,
+            'date_of_birth' => 'required',
+            'city_id' => 'required',
+            'number_phone' => 'required',
+            'last_donation_data' => 'required',
+            'password' => 'nullable|confirmed',
+            'blood_type_id'=> 'required'
+
+        ]);
+
+        if($validator->fails()){
+            return responsejson(0,$validator->errors()->first(),$validator->errors());
+        }
+
+
+        if(request()->has('password')){
+            $request->merge(['password' => bcrypt($request->password)]);
+        }
+
+        $request->user()->update($request->all());
+        return responsejson(1,'تم التعديل بنجاح ',['client' => $request->user()]);
+
+    }
+
 
 }
