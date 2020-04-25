@@ -32,11 +32,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
         Route::group(['middleware' => 'auth:api'],function(){
             Route::get('categories','MainController@categories');
             Route::get('notifications','MainController@notifications');
-
+            Route::get('donationRequest','MainController@donationRequests');
+            Route::post('createDonationRequests','MainController@createDonationRequests');
             Route::post('contact','MainController@contact');
-
-
-
             Route::post('register_token','AuthController@registerToken');
             Route::post('remove_token','AuthController@removeToken');
             
