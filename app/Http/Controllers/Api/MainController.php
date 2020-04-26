@@ -12,6 +12,7 @@ use App\models\Contact;
 use App\models\Category;
 use App\models\Notification;
 use App\models\DonationRequest;
+use App\models\Post;
 
 
 
@@ -170,6 +171,89 @@ class MainController extends Controller
         return responsejson(1,'تم التعديل بنجاح ',['client' => $request->user()]);
 
     }
+
+    public function searchCategory(Request $request)
+    {
+        $posts = Post::with('category')->where(function ($post) use ($request) {
+            if ($request->input('category_id')) {
+                $post->where('category_id', $request->category_id);
+            }
+            if ($request->input('keyword')) {
+                $post->where(function ($posts) use ($request) {
+                    $posts->where('title', 'like', '%' . $request->keyword . '%');
+                    $posts->orWhere('content', 'like', '%' . $request->keyword . '%');
+                });
+            }
+        })->latest()->paginate(10);
+        //dd($posts);
+        if ($posts->count() == 0) {
+            return responseJson(0, 'Failed');
+        }
+        return responseJson(1, 'success', $posts);
+    }
+
+    public function Favourites(Request $request)
+    {
+        $favourites = $request->user()->posts()->paginate(10);
+        return responsejson(1,'success',$favourites);
+    }    
+
+    public function toggleFavourites(Request $request)
+    {
+        $validator = validator()->make($request->all(), [
+            'posts' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return responseJson(0, $validator->errors()->first(), $validator->errors());
+        }
+//        dd($request->post_id);
+//        dd($request->user()->posts()->toggle($request->user()->posts()->post_id));
+        $favourites = $request->user()->posts()->toggle($request->posts);
+        return responseJson(1, 'success', $favourites);
+    }
+
+
+    public function getNotificationSettings(Request $request)
+    {
+//        dd($request->user()->governorates()->pluck('governorates.id')->toArray());
+        $bloodtype = $request->user()->bloodtypes()->pluck('blood_types.id')->toArray();
+        $governorate = $request->user()->governorates()->pluck('governorates.id')->toArray();
+//        $orders = Auth::user()->bloodtypes;
+        return responseJson(1, 'success', [
+            'bloodtype' => $bloodtype,
+            'governorate' => $governorate
+        ]);
+    }
+
+
+    public function updateNotificationSettings(Request $request)
+    {
+        $validator = validator()->make($request->all(), [
+            'governorates' => 'required',
+            'blood_types' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return responseJson(0, $validator->errors()->first(), $validator->errors());
+        }
+
+        $governorate = $request->user()->governorates()->sync($request->governorates);
+        $bloodtype = $request->user()->bloodtypes()->sync($request->blood_types);
+
+        return responseJson(1, 'success', [
+            'bloodtype' => $bloodtype,
+            'governorate' => $governorate
+        ]);
+    }
+
+    public function post(Request $request)
+    {
+        $post = Post::find($request->id);
+//        $post = $request->user()->posts()->pluck('posts.id')->get();
+        return responseJson(1, 'success', $post);
+    }
+
+
 
 
 }
