@@ -12,5 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('layouts/home');
+    return view('layouts/app');
 });
+Route::resource('home','home');
+Route::resource('governorate', 'GovernorateController');
+

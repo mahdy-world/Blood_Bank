@@ -39,7 +39,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
             Route::post('remove_token','AuthController@removeToken');
             Route::post('profiledit','MainController@profiledit');
             Route::post('searchCategory','MainController@searchCategory');
-            Route::get('Favourites','MianController@Favourites');
+            Route::get('Favourites','MainController@Favourites');
             Route::post('toggleFavourites','MainController@toggleFavourites');
             Route::get('getNotificationSettings','MainController@getNotificationSettings');
             Route::post('updateNotificationSettings','MainController@updateNotificationSettings');
