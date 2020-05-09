@@ -14,7 +14,7 @@ class GovernorateController extends Controller
      */
     public function index()
     {
-        $records = Governorate::paginate(20);
+        $records = Governorate::paginate(30);
         return view('governorates.index',compact('records'));
     }
 
@@ -25,7 +25,7 @@ class GovernorateController extends Controller
      */
     public function create()
     {
-        //
+        return view('governorates.create');
     }
 
     /**
@@ -36,7 +36,25 @@ class GovernorateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required'
+            
+        ];
+ 
+        $message = [
+            'name.required' => 'الاسم مطلوب'
+        ];
+ 
+        $this->validate($request , $rules , $message);
+
+        //$record = New Governorates;
+        //$record->$request->input('name');
+        //$record->save();
+ 
+        $record = Governorate::create($request->all());
+        
+        flash()->success("تم الاضافة بنجاح ");
+        return redirect(route('governorate.index'));
     }
 
     /**
@@ -57,8 +75,9 @@ class GovernorateController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    { 
+        $model = Governorate::findOrFail($id);
+        return view('governorates.edit', compact('model'));
     }
 
     /**
@@ -70,7 +89,10 @@ class GovernorateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $record = Governorate::findOrFail($id);
+        $record->update($request->all());
+        flash()->success("تم التحديث بنجاح");
+        return redirect(route('governorate.index'));
     }
 
     /**
@@ -81,6 +103,9 @@ class GovernorateController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $record = Governorate::findOrFail($id);
+        $record->delete();
+        flash()->success("تم الحذف بنجاح");
+        return back();
     }
 }

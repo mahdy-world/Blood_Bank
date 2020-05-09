@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('layouts/app');
+    return view('layouts/home');
 });
 Route::resource('home','home');
 Route::resource('governorate', 'GovernorateController');
