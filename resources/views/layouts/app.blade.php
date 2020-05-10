@@ -84,7 +84,7 @@
 
           <!-- المدن -->
           <li class="nav-item has-treeview">
-            <a href="../widgets.html" class="nav-link">
+            <a href="{{url(route('city.index'))}}" class="nav-link">
               <i class="nav-icon fas fa-map"></i>
               <p>
                

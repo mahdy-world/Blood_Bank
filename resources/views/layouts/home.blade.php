@@ -72,7 +72,7 @@
               <div class="icon">
                 <i class="fas fa-map"></i>
               </div>
-              <a href="#" class="small-box-footer">
+              <a href="{{url(route('city.index'))}}" class="small-box-footer">
                عرض <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
