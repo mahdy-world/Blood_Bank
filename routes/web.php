@@ -17,4 +17,5 @@ Route::get('/', function () {
 Route::resource('home','home');
 Route::resource('governorate', 'GovernorateController');
 Route::resource('city', 'CityController');
+Route::resource('contant','ContantController');
 

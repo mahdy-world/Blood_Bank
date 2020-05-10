@@ -1,8 +1,5 @@
 @extends('layouts\app')
 
-
-
-
 @section('content-wrapper')
 <!-- Content Header (Page header) -->
 <div class="content-wrapper">

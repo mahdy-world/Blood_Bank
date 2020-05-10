@@ -128,7 +128,7 @@
 
            <!-- الشكاوي والاقتراحات -->
            <li class="nav-item has-treeview">
-            <a href="../widgets.html" class="nav-link">
+            <a href="{{url(route('contant.index'))}}" class="nav-link">
               <i class="nav-icon fas fa-comments"></i>
               <p>
                

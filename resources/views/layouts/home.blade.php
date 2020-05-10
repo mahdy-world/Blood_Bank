@@ -162,7 +162,7 @@
               <div class="icon">
               <i class="fas fa-comments"></i>
               </div>
-              <a href="#" class="small-box-footer">
+              <a href="{{url(route('contant.index'))}}" class="small-box-footer">
                 عرض<i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
