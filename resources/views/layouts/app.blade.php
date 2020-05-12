@@ -117,7 +117,7 @@
 
            <!-- طلبات التبرع -->
            <li class="nav-item has-treeview">
-            <a href="../widgets.html" class="nav-link">
+            <a href="{{url(route('donationrequest.index'))}}" class="nav-link">
               <i class="nav-icon fas fa-box-open"></i>
               <p>
                

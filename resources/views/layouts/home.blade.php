@@ -123,7 +123,7 @@
               <div class="icon">
               <i class="fas fa-box-open"></i>
               </div>
-              <a href="#" class="small-box-footer">
+              <a href="{{url(route('donationrequest.index'))}}" class="small-box-footer">
                 عرض <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>

@@ -19,4 +19,5 @@ Route::resource('governorate', 'GovernorateController');
 Route::resource('city', 'CityController');
 Route::resource('contant','ContantController');
 Route::resource('category', 'CategoryController');
+Route::resource('donationrequest','DonationrequiestController');
 
