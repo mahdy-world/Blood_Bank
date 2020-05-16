@@ -1,4 +1,4 @@
-@extends('layouts\app')
+@extends('mytemp\app')
 @inject('contact','App\models\Contact')
 
 
