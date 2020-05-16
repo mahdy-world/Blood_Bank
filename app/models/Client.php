@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -20,34 +20,31 @@ class Client extends Authenticatable {
 		return $this->belongsToMany('App\Models\Post');
 	}
 
-	public function bloodtype()
-	{
-		return $this->belongsTo('App\Models\BloodType');
-	}
+	
 
 	public function bloodtypes()
 	{
-		return $this->belongsToMany('App\Models\BloodType');
+		return $this->belongsToMany('App\models\BloodType');
 	}
 
 	public function city()
 	{
-		return $this->belongsTo('App\Models\City');
+		return $this->belongsTo('App\models\City');
 	}
 
 	public function governorates()
 	{
-		return $this->belongsToMany('App\Models\Governorate');
+		return $this->belongsToMany('App\models\Governorate');
 	}
 
 	public function notifications()
 	{
-		return $this->belongsToMany('App\Models\Notification');
+		return $this->belongsToMany('App\models\Notification');
 	}
 
 	public function donationrequests()
 	{
-		return $this->hasMany('App\Models\DonationRequest');
+		return $this->hasMany('App\models\DonationRequest');
 	}
 
 	public function tokens()

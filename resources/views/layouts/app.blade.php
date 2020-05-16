@@ -106,7 +106,7 @@
 
            <!-- المقالاات -->
            <li class="nav-item has-treeview">
-            <a href="../widgets.html" class="nav-link">
+            <a href="{{url(route('post.index'))}}" class="nav-link">
               <i class="nav-icon fas fa-scroll"></i>
               <p>
                
@@ -139,7 +139,7 @@
 
            <!-- العملاء -->
            <li class="nav-item has-treeview">
-            <a href="../widgets.html"class="nav-link">
+            <a href="{{url(route('client.index'))}}"class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
                
@@ -147,11 +147,6 @@
               </p>
             </a>
           </li>
-
-          
-
-          
-          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

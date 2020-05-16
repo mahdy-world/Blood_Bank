@@ -20,4 +20,8 @@ Route::resource('city', 'CityController');
 Route::resource('contant','ContantController');
 Route::resource('category', 'CategoryController');
 Route::resource('donationrequest','DonationrequiestController');
+Route::resource('post','PostController');
+Route::resource('client','ClientController');
+Route::put('is_active/{id}', 'ClientController@is_active')->name('client.is_active');
+Route::delete('client/{id}', 'ClientController@destroy')->name('client.destroy');
 

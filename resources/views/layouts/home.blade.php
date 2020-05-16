@@ -106,7 +106,7 @@
               <div class="icon">
               <i class="fas fa-scroll"></i>
               </div>
-              <a href="#" class="small-box-footer">
+              <a href="{{url(route('post.index'))}}" class="small-box-footer">
                 عرض <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
@@ -179,7 +179,7 @@
               <div class="icon">
               <i class="fas fa-users"></i>
               </div>
-              <a href="#" class="small-box-footer">
+              <a href="{{url(route('client.index'))}}}" class="small-box-footer">
                عرض <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>

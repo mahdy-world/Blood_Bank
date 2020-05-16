@@ -1,8 +1,9 @@
 @extends('layouts\app')
 @inject('client','App\models\Client')
+@inject('model','App\models\Governorate')
 @inject('city','App\models\City')
 @inject('categories','App\models\Category')
-@inject('posts','App\models\Post')
+@inject('model', 'App\models\Post')
 @inject('donation','App\models\DonationRequest')
 @inject('contact','App\models\Contact')
 
@@ -15,12 +16,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>اضافة المقال</h1>
+            <h1>اضافة مفالة</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{url(route('home.index'))}}">الرئيسية</a></li>
-              <li class="breadcrumb-item active">تعديل المقال</li>
+              <li class="breadcrumb-item active">اضافة مقالة</li>
             </ol>
           </div>
         </div>
@@ -31,20 +32,14 @@
           <div class="col-12">
             <!-- Default box -->
             <div class="card">
-            
               <div class="card-body">
              
              <!-- errors message -->
-              @include('post.validationerrors')
+              @include('Post.validationerrors')
 
-              {!! Form::model($model ,[ 
-              
-              'action' => ['PostController@update' ,$model->id],
-              'method' => 'Put'
-              
-              ]) !!}
+              {!! Form::model($model ,[ 'action' => 'PostController@store' , 'files'=>true]) !!}
 
-              @include('governorates\form')
+              @include('post.form')
               
               {!! Form::close() !!}  
              

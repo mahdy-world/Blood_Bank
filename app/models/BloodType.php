@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\models;
 
 
 use Illuminate\Database\Eloquent\Model;
@@ -11,19 +11,17 @@ class BloodType extends Model {
 	public $timestamps = true;
 	protected $fillable = array('name');
 
+	
+	
 	public function clients()
-	{
-		return $this->hasMany('App\Models\Client');
-	}
-
-	public function client()
-	{
-		return $this->belongsToMany('App\Models\Client');
+    {
+		return $this->belongsToMany('App\models\Client');
+		
 	}
 
 	public function donationrequests()
 	{
-		return $this->hasMany('App\Models\DonationRequest');
+		return $this->hasMany('App\models\DonationRequest');
 	}
 
 }

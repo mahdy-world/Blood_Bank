@@ -15,7 +15,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>اضافة المقال</h1>
+            <h1>تعديل المقال</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -40,11 +40,12 @@
               {!! Form::model($model ,[ 
               
               'action' => ['PostController@update' ,$model->id],
-              'method' => 'Put'
+              'method' => 'Put',
+              'files'  =>  true
               
               ]) !!}
 
-              @include('governorates\form')
+              @include('post\form')
               
               {!! Form::close() !!}  
              
