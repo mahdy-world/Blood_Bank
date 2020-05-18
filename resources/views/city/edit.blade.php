@@ -1,4 +1,4 @@
-@extends('layouts\app')
+@extends('master\app')
 
 @section('content-wrapper')
 <!-- Content Header (Page header) -->
@@ -12,7 +12,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{url(route('home.index'))}}">الرئيسية</a></li>
+              <li class="breadcrumb-item"><a href="{{url(route('home'))}}">الرئيسية</a></li>
               <li class="breadcrumb-item active">تعديل المدن</li>
             </ol>
           </div>

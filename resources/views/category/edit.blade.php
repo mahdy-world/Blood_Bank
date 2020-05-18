@@ -1,4 +1,4 @@
-@extends('layouts\app')
+@extends('master\app')
 @inject('client','App\models\Client')
 @inject('city','App\models\City')
 @inject('categories','App\models\Category')

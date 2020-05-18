@@ -1,4 +1,4 @@
-@extends('mytemp\app')
+@extends('master/app')
 @inject('client','App\models\Client')
 @inject('governorates','App\models\Governorate')
 @inject('city','App\models\City')

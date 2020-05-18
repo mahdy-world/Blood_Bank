@@ -1,4 +1,4 @@
-@extends('mytemp\app')
+@extends('master\app')
 @inject('contact','App\models\Contact')
 
 
@@ -14,7 +14,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{url(route('home.index'))}}">الرئيسية</a></li>
+              <li class="breadcrumb-item"><a href="{{url(route('home'))}}">الرئيسية</a></li>
               <li class="breadcrumb-item active">الشكاوي والاقتراحات</li>
             </ol>
           </div>

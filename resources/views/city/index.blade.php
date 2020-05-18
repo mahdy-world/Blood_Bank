@@ -1,4 +1,4 @@
-@extends('layouts\app')
+@extends('master\app')
 @inject('governorate','App\models\Governorate')
 @inject('city','App\models\City')
 
@@ -16,7 +16,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{url(route('home.index'))}}">الرئيسية</a></li>
+              <li class="breadcrumb-item"><a href="{{url(route('home'))}}">الرئيسية</a></li>
               <li class="breadcrumb-item active">المدن</li>
             </ol>
           </div>

@@ -11,10 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-Route::resource('home','home');
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+//Route::resource('home','home');
+Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
+Route::get('/', 'HomeController@index')->name('home');
 Route::resource('governorate', 'GovernorateController');
 Route::resource('city', 'CityController');
 Route::resource('contant','ContantController');
@@ -25,9 +27,12 @@ Route::resource('client','ClientController');
 Route::put('is_active/{id}', 'ClientController@is_active')->name('client.is_active');
 Route::delete('client/{id}', 'ClientController@destroy')->name('client.destroy');
 
+});
+
+
+
+
 
 
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

@@ -41,10 +41,10 @@ return [
             'provider' => 'users',
         ],
         
-      //  'clients' => [
-            //'driver' => 'session',
-            //'provider' => 'clients',
-        //],
+        'clients' => [
+            'driver' => 'session',
+            'provider' => 'clients',
+        ],
 
         'api' => [
             'driver' => 'token',

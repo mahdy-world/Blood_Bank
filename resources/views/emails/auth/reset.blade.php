@@ -1,7 +1,7 @@
 @component('mail::message')
 # Introduction
 
-blood_bank resetpasword
+blood_bank resetpassword
 
 @component('mail::button', ['url' => 'http//ipda3.com'])
 اعادة كلمة السر
