@@ -163,6 +163,35 @@
               </p>
             </a>
           </li>
+
+
+           <!-- المستخدمين -->
+
+          <li class="nav-item has-treeview">
+            <a href="{{url(route('client.index'))}}"class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+               
+              المستخدمين
+              </p>
+            </a>
+          </li>
+
+
+
+
+
+
+           <!-- الرتب -->
+          <li class="nav-item has-treeview">
+            <a href="{{url(route('role.index'))}}"class="nav-link">
+              <i class="nav-icon fas fa-list"></i>
+              <p>
+               
+              الرتب
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
