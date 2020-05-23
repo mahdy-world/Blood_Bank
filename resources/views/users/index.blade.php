@@ -1,5 +1,12 @@
 @extends('master\app')
-@inject('roles','App\models\Role')
+@inject('client','App\models\Client')
+@inject('governorates','App\models\Governorate')
+@inject('city','App\models\City')
+@inject('categories','App\models\Category')
+@inject('posts','App\models\Post')
+@inject('donation','App\models\DonationRequest')
+@inject('contact','App\models\Contact')
+
 
 @section('content-wrapper')
 <!-- Content Header (Page header) -->
@@ -9,12 +16,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>الرتب</h1>
+            <h1>قائمة المستخدمين </h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{url(route('home'))}}">الرئيسية</a></li>
-              <li class="breadcrumb-item active">الرتب</li>
+              <li class="breadcrumb-item active">قائمة المتخدمين</li>
             </ol>
           </div>
         </div>
@@ -26,7 +33,7 @@
             @include('flash::message')
               <div class="card-header">
                 
-                <a href="{{url(route('role.create'))}}" class="btn btn-primary" > اضافة جديد </a> 
+                <a href="{{url(route('users.create'))}}" class="btn btn-primary" > اضافة جديد </a> 
               </div>
               
     
@@ -38,7 +45,8 @@
               <tr>
                 <th>#</th>
                 <th>اسم </th>
-                <th>الاسم المعروض </th>
+                <th>البريد الالكتروني </th>
+                <th>رتب المستخدم</th>
                 <th class="text-center">تعديل</th>
                 <th class="text-center">حذف</th>
               </tr>
@@ -48,22 +56,27 @@
                   @foreach($records as $record)
                     <tr>
                        <td>{{$loop->iteration}}</td>
-                       <td>{{$record->name}}</td>
-                       <td>{{$record->display_name}}</td> 
+                       <td>{{$record->name}}</td> 
+                       <td>{{$record->email}}</td> 
+                       <td>
+                        @foreach($record->roles as $role)
+                          <div class="btn btn-success">{{$role->display_name}}</div>
+                        @endforeach
                        
+                       </td> 
 
- 
-                       <td class="text-center"><a  href="{{url(route('role.edit',$record->id))}}" class="btn btn-success"><i class="fa fa-edit"></i></a>
+                       <td class="text-center"><a  href="{{url(route('users.edit',$record->id))}}" class="btn btn-success"><i class="fa fa-edit"></i></a>
                        </td>
                        <td class="text-center">
                        {!! Form::open([
-                       'action' => ['RoleController@destroy' ,$record->id ],
+                       'action' => ['UserController@destroy' ,$record->id ],
                        'method' => 'delete'
                        
                        
                        ]) !!}
 
-                       <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> </button>
+                      {{--<button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> </button> --}} 
+                       <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure？')"><i class="fa fa-trash"></i></button>
                        {!! Form::close() !!}
                        
                        

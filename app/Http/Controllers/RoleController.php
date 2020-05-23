@@ -38,19 +38,22 @@ class RoleController extends Controller
     {
         $rules = [
             'name' => 'required|unique:roles,name',
-            //'permissions_list'=>'required|array'
+            'permissions_list'=>'required|array',
+            'display_name'=>'required',
         ];
 
         $message = [
             'name.required' =>'الاسم مطلوب',
-            'permissions_list.required' =>'الاسم مطلوب'
+            'permissions_list.required' =>'الصلاحيات مطلوبة',
+            'display_name.required' =>'اسم العرض مطلوب'
         ];
 
         $this->validate($request,$rules,$message);
 
         $record = Role::create($request->all());
+        $record->permissions()->attach($request->permissions_list);
         flash()->success("تم الاضافة بنجاح ");
-        return redirect(route('roles.index'));
+        return redirect(route('role.index'));
     }
 
         
@@ -88,10 +91,26 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $rules = [
+            'name' => 'required|unique:roles,name,'.$id,
+            'permissions_list'=>'required|array',
+            'display_name'=>'required',
+        ];
+
+        $message = [
+            'name.required' =>'الاسم مطلوب',
+            'permissions_list.required' =>'الصلاحيات مطلوبة',
+            'display_name.required' =>'اسم العرض مطلوب'
+        ];
+
+       
+        $this->validate($request,$rules,$message);
+
         $record = Role::findOrFail($id);
         $record->update($request->all());
+        $record->permissions()->sync($request->permissions_list);
         flash()->success("تم التحديث بنجاح");
-        return redirect(route('roles.index'));
+        return redirect(route('role.index'));
     }
 
     /**

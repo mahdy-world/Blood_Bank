@@ -1,6 +1,10 @@
 @extends('master\app')
-@inject('role','App\models\Role')
-
+@inject('client','App\models\Client')
+@inject('city','App\models\City')
+@inject('categories','App\models\Category')
+@inject('posts','App\models\Post')
+@inject('donation','App\models\DonationRequest')
+@inject('contact','App\models\Contact')
 
 
 @section('content-wrapper')
@@ -11,12 +15,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>تعديل الرتب</h1>
+            <h1>تعديل المستخدم </h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{url(route('home'))}}">الرئيسية</a></li>
-              <li class="breadcrumb-item active">تعديل الرتب</li>
+              <li class="breadcrumb-item active">تعديل المستخدم</li>
             </ol>
           </div>
         </div>
@@ -31,16 +35,16 @@
               <div class="card-body">
              
              <!-- errors message -->
-              @include('roles.validationerrors')
+              @include('category.validationerrors')
 
               {!! Form::model($model ,[ 
               
-              'action' => ['RoleController@update' ,$model->id],
+              'action' => ['UserController@update' ,$model->id],
               'method' => 'Put'
               
               ]) !!}
 
-              @include('roles\form')
+              @include('users\form')
               
               {!! Form::close() !!}  
              

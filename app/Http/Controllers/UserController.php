@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class UserController extends Controller
 {
@@ -13,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $records = User::paginate(30);
+        return view('users.index',compact('records'));
     }
 
     /**
@@ -23,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -34,7 +36,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name'      =>'required',
+            'email' => 'required|email|unique:users,email,' . $request->user()->id,
+            'password'  =>'required|confirmed|min:8',
+            'roles_list' => 'required'
+        ], [
+            'name.required' => 'Name is Required',
+            'email.required' => 'Email is Required',
+            'password.required' => 'Password Id is Required',
+            'roles_list.required' => 'Roles List Id is Required'
+        ]);
+        $request->merge(['password'=>bcrypt($request->password)]);
+        $user = User::create($request->except('roles_list'));
+        $user->roles()->attach($request->input('roles_list'));
+//        $record = User::create($request->all());
+        flash()->success("Success");
+        return redirect(route('users.index'));
     }
 
     /**
@@ -56,7 +74,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $model = User::findOrFail($id);
+        return view('users.edit', compact('model'));
     }
 
     /**
@@ -68,7 +87,26 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $records = User::findOrFail($id);
+        $this->validate($request, [
+            'name'      =>'required',
+            'email'     =>'required|email|unique:users,email,'.$id,
+            'password'  =>'sometimes|nullable|confirmed',
+            'roles_list' => 'required'
+        ], [
+            'name.required' => 'Name is Required',
+            'email.required' => 'Email is Required',
+            'password.required' => 'Password Id is Required',
+            'roles_list.required' => 'Roles List Id is Required'
+        ]);
+        $records->roles()->sync((array) $request->input('roles_list'));
+        $records->update($request->except('password'));
+        if (request()->input('password')) {
+//            dd($request->password);
+            $records->update(['password'=>bcrypt($request->password)]);
+        }
+        flash()->success('تم التعديل بنجاح');
+        return redirect(route('users.index'));
     }
 
     /**
@@ -79,6 +117,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $record = User::findOrFail($id);
+        $record->delete();
+        flash()->success('Deleted');
+        return back();
     }
 }

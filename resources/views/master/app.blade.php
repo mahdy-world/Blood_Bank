@@ -15,7 +15,8 @@
   <link rel="stylesheet" href="{{asset('Admin_Lte/css/adminlte.min.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
   <!--flash link --> 
   
 
@@ -59,11 +60,7 @@
         </div>
     </li>
        
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
+     
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -168,8 +165,8 @@
            <!-- المستخدمين -->
 
           <li class="nav-item has-treeview">
-            <a href="{{url(route('client.index'))}}"class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
+            <a href="{{url(route('users.index'))}}"class="nav-link">
+              <i class="nav-icon fas fa-user-secret"></i>
               <p>
                
               المستخدمين
@@ -219,5 +216,8 @@
 <script src="{{asset('Admin_Lte/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('Admin_Lte/js/demo.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+@stack('scripts')
 </body>
 </html>

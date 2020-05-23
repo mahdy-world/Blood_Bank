@@ -1,5 +1,6 @@
 @extends('master\app')
-@inject('role','App\models\Role')
+
+@inject('model','App\User')
 
 
 
@@ -11,12 +12,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>تعديل الرتب</h1>
+            <h1>اضافة قسم</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{url(route('home'))}}">الرئيسية</a></li>
-              <li class="breadcrumb-item active">تعديل الرتب</li>
+              <li class="breadcrumb-item active">اضافة القسم</li>
             </ol>
           </div>
         </div>
@@ -27,20 +28,14 @@
           <div class="col-12">
             <!-- Default box -->
             <div class="card">
-            
               <div class="card-body">
              
              <!-- errors message -->
-              @include('roles.validationerrors')
+              @include('category.validationerrors')
 
-              {!! Form::model($model ,[ 
-              
-              'action' => ['RoleController@update' ,$model->id],
-              'method' => 'Put'
-              
-              ]) !!}
+              {!! Form::model($model ,[ 'action' => 'UserController@store' ]) !!}
 
-              @include('roles\form')
+              @include('users.form')
               
               {!! Form::close() !!}  
              

@@ -14,8 +14,11 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+Auth::routes();
+
 //Route::resource('home','home');
-Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
+Route::group(['middleware' => ['auth','auto-check-permission'] , 'prefix' => 'admin'], function () {
 Route::get('/', 'HomeController@index')->name('home');
 Route::resource('governorate', 'GovernorateController');
 Route::resource('city', 'CityController');
@@ -37,4 +40,3 @@ Route::delete('client/{id}', 'ClientController@destroy')->name('client.destroy')
 
 
 
-Auth::routes();

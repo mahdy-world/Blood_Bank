@@ -10,15 +10,15 @@
 
 
                       <div class="form-group"> 
-                        <label for="name">الاسم المعروض</label>
-                        {!! Form::text('name',null,[
+                        <label for="display_name">الاسم المعروض</label>
+                        {!! Form::text('display_name',null,[
                           'class' => 'form-control',
                         ]) !!}
                       </div>
 
                       <div class="form-group"> 
-                        <label for="name">الوصف</label>
-                        {!! Form::textarea('name',null,[
+                        <label for="description">الوصف</label>
+                        {!! Form::textarea('description',null,[
                           'class' => 'form-control',
                         ]) !!}
                       </div>
@@ -31,7 +31,14 @@
                               <div class=" col-sm-3">
                                 <div class="checkbox">
                                   <label>
-                                    <input type="checkbox" name="permissions_list[]"> {{$permission->display_name}}
+                                    <input type="checkbox" name="permissions_list[]" value="{{$permission->id}}" 
+
+                                    @if($model->hasPermission($permission->name))
+                                      checked
+                                      @endif
+                                    >
+                                    {{$permission->display_name}}
+                                   
                                   </label>
                                 </div>
 
@@ -52,3 +59,7 @@
                     
                        </div>
               <!-- /.card-body -->
+@push('scripts')
+
+
+@endpush
