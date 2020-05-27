@@ -16,12 +16,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>الاقسام</h1>
+            <h1>Categories</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{url(route('home'))}}">الرئيسية</a></li>
-              <li class="breadcrumb-item active">الاقسام</li>
+              <li class="breadcrumb-item"><a href="{{url(route('home'))}}">Main</a></li>
+              <li class="breadcrumb-item active">Categories</li>
             </ol>
           </div>
         </div>
@@ -33,7 +33,7 @@
             @include('flash::message')
               <div class="card-header">
                 
-                <a href="{{url(route('category.create'))}}" class="btn btn-primary" > اضافة جديد </a> 
+                <a href="{{url(route('category.create'))}}" class="btn btn-primary" > Add New </a> 
               </div>
               
     
@@ -44,9 +44,9 @@
               <thead>
               <tr>
                 <th>#</th>
-                <th>اسم القسم</th>
-                <th class="text-center">تعديل</th>
-                <th class="text-center">حذف</th>
+                <th>Name</th>
+                <th class="text-center">Edit</th>
+                <th class="text-center">Delete</th>
               </tr>
               </tehead>
               <tbody>

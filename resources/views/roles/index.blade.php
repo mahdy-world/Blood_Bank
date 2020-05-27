@@ -49,7 +49,7 @@
                     <tr>
                        <td>{{$loop->iteration}}</td>
                        <td>{{$record->name}}</td>
-                       <td>{{$record->display_name}}</td> 
+                       <td><div class="btn btn-info">{{$record->display_name}}</div></td> 
                        
 
  

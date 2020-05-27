@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Blood Bank</title>
   <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
@@ -15,11 +15,26 @@
   <link rel="stylesheet" href="{{asset('Admin_Lte/css/adminlte.min.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+ 
   <!--flash link --> 
-  
 
+{{--@if(app()->getLocale() =='ar')
+
+    <link rel ="stylesheet" href="{{asset('rtl/AdminLTE.min.css')}}">
+    <link rel ="stylesheet" href="{{asset('rtl/fonts-fa.css')}}">
+    <link rel ="stylesheet" href="{{asset('rtl/bootstrap-rtl.min.css')}}">
+    <link rel ="stylesheet" href="{{asset('rtl/rtl.css')}}">
+    <link rel ="stylesheet" href="{{asset('rtl/_all-skins.min.css')}}">
+    <link rel ="stylesheet" href="{{asset('rtl/profile.css')}}">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons 2.0.0 -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+
+
+@endif--}}
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -53,6 +68,8 @@
                               document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}
             </a>
+           
+           
 
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
@@ -73,7 +90,7 @@
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">Blood Bank</span>
+      <span class="brand-text font-weight-light" >بنك الدم</span>
     </a>
     
 
@@ -90,7 +107,7 @@
               <i class="nav-icon fas fa-flag"></i>
               <p>
                
-              المحافظات
+              Governorate 
               </p>
             </a>
           </li>
@@ -101,7 +118,7 @@
               <i class="nav-icon fas fa-map"></i>
               <p>
                
-              المدن
+              Citis
               </p>
             </a>
           </li>
@@ -112,7 +129,8 @@
               <i class="nav-icon fas fa-list"></i>
               <p>
                
-              الاقسام
+              Categories
+
               </p>
             </a>
           </li>
@@ -123,7 +141,7 @@
               <i class="nav-icon fas fa-scroll"></i>
               <p>
                
-              المقالاات
+              Posts
               </p>
             </a>
           </li>
@@ -134,7 +152,7 @@
               <i class="nav-icon fas fa-box-open"></i>
               <p>
                
-              طلبات التبرع
+              Donation Requests
               </p>
             </a>
           </li>
@@ -145,7 +163,8 @@
               <i class="nav-icon fas fa-comments"></i>
               <p>
                
-              الشكاوي والاقتراحات
+              ContactUs
+
               </p>
             </a>
           </li>
@@ -156,7 +175,7 @@
               <i class="nav-icon fas fa-users"></i>
               <p>
                
-              العملاء
+              Clients
               </p>
             </a>
           </li>
@@ -169,14 +188,10 @@
               <i class="nav-icon fas fa-user-secret"></i>
               <p>
                
-              المستخدمين
+              Users
               </p>
             </a>
           </li>
-
-
-
-
 
 
            <!-- الرتب -->
@@ -185,7 +200,30 @@
               <i class="nav-icon fas fa-list"></i>
               <p>
                
-              الرتب
+              Roles
+              </p>
+            </a>
+          </li>
+
+
+           <!-- اعدادت التطبيق -->
+           <li class="nav-item has-treeview">
+            <a href="{{url(route('settings.index'))}}"class="nav-link">
+              <i class="nav-icon fas fa-cogs"></i>
+              <p>
+               
+              Settings
+              </p>
+            </a>
+          </li>
+
+          <!-- اعدادت التطبيق -->
+          <li class="nav-item has-treeview">
+            <a href="{{url(route('getChangePassword'))}}"class="nav-link">
+              <i class="nav-icon fas fa-key"></i>
+              <p>
+               
+              Change Password
               </p>
             </a>
           </li>
@@ -216,8 +254,6 @@
 <script src="{{asset('Admin_Lte/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('Admin_Lte/js/demo.js')}}"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
-@stack('scripts')
 </body>
 </html>

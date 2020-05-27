@@ -9,12 +9,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>العملاء</h1>
+            <h1>Clinets</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{url(route('home'))}}">الرئيسية</a></li>
-              <li class="breadcrumb-item active">العملاء</li>
+              <li class="breadcrumb-item"><a href="{{url(route('home'))}}">Main</a></li>
+              <li class="breadcrumb-item active">Clinets</li>
             </ol>
           </div>
         </div>
@@ -34,16 +34,16 @@
               <thead>
               <tr>
               <th>#</th>
-              <th>الاسم</th>
-              <th>البريد الالكترونى</th>
-              <th>رقم الهاتف</th>
-              <th>تاريخ الميلاد</th>
-              <th>تاريج التبرع الاخير</th>
-              <th>نوع فصيله الدم</th>
-              <th>المدينه</th>
-              <th>المحافظه</th>
-              <th class="text-center">التفاعل  !!</th>
-              <th class="text-center">حذف</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Date</th>
+              <th>The Last Donation Requst</th>
+              <th>Blood_Type</th>
+              <th>City</th>
+              <th>Governorate</th>
+              <th class="text-center">Interaction  !!</th>
+              <th class="text-center">Delete</th>
               </tr>
               </tehead>
               <tbody>

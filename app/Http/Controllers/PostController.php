@@ -53,7 +53,7 @@ class PostController extends Controller
         if ( $request->hasFile('image')  ) {
             $logo = $request->image;
             $logo_new_name = time() . $logo->getClientOriginalName();
-            $logo->move('mahdy', $logo_new_name);
+            $logo->move('mahdy/', $logo_new_name);
 
             $record->image = 'mahdy/'.$logo_new_name;
             $record->save();
@@ -103,7 +103,7 @@ class PostController extends Controller
         if ( $request->hasFile('image')  ) {
             $logo = $request->image;
             $logo_new_name = time() . $logo->getClientOriginalName();
-            $logo->move('mahdy', $logo_new_name);
+            $logo->move('mahdy/', $logo_new_name);
 
             $records->image = 'mahdy/'.$logo_new_name;
             $records->save();

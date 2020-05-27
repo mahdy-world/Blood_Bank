@@ -60,7 +60,7 @@
                        <td>{{$record->email}}</td> 
                        <td>
                         @foreach($record->roles as $role)
-                          <div class="btn btn-success">{{$role->display_name}}</div>
+                          <div class="btn btn-info">{{$role->display_name}}</div>
                         @endforeach
                        
                        </td> 

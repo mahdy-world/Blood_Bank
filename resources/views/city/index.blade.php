@@ -12,12 +12,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>المدن</h1>
+            <h1>Citis</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{url(route('home'))}}">الرئيسية</a></li>
-              <li class="breadcrumb-item active">المدن</li>
+              <li class="breadcrumb-item"><a href="{{url(route('home'))}}">Main</a></li>
+              <li class="breadcrumb-item active">Citis</li>
             </ol>
           </div>
         </div>
@@ -29,7 +29,7 @@
             @include('flash::message')
               <div class="card-header">
                 
-                <a href="{{url(route('city.create'))}}" class="btn btn-primary" > اضافة جديد </a> 
+                <a href="{{url(route('city.create'))}}" class="btn btn-primary" > Add New </a> 
               </div>
               
     
@@ -40,10 +40,10 @@
               <thead>
               <tr>
                 <th>#</th>
-                <th>المدينة</th>
-                <th>المحافظة</th>
-                <th class="text-center">تعديل</th>
-                <th class="text-center">حذف</th>
+                <th>City</th>
+                <th>Governorate</th>
+                <th class="text-center">Edit</th>
+                <th class="text-center">Delete</th>
               </tr>
               </tehead>
               <tbody>

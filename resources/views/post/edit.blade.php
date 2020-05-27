@@ -45,7 +45,7 @@
               
               ]) !!}
 
-              @include('post\form')
+              @include('post.form')
               
               {!! Form::close() !!}  
              

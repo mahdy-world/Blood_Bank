@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+
+
+
 //Route::resource('home','home');
 Route::group(['middleware' => ['auth','auto-check-permission'] , 'prefix' => 'admin'], function () {
 Route::get('/', 'HomeController@index')->name('home');
@@ -29,8 +32,15 @@ Route::resource('post','PostController');
 Route::resource('client','ClientController');
 Route::resource('role', 'RoleController');
 Route::resource('users', 'UserController');
+Route::resource('settings','SettingsController');
+
+Route::post('changePassword', 'UserController@changePassword')->name('changePassword');
+Route::get('getChangePassword', 'UserController@getChangePassword')->name('getChangePassword');
+
 Route::put('is_active/{id}', 'ClientController@is_active')->name('client.is_active');
 Route::delete('client/{id}', 'ClientController@destroy')->name('client.destroy');
+
+
 
 });
 
