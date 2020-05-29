@@ -32,7 +32,7 @@ Route::resource('post','PostController');
 Route::resource('client','ClientController');
 Route::resource('role', 'RoleController');
 Route::resource('users', 'UserController');
-Route::resource('settings','SettingsController');
+
 
 Route::post('changePassword', 'UserController@changePassword')->name('changePassword');
 Route::get('getChangePassword', 'UserController@getChangePassword')->name('getChangePassword');

@@ -17,12 +17,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>طلبات التبرع</h1>
+            <h1>Donation Requests</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{url(route('home'))}}">الرئيسية</a></li>
-              <li class="breadcrumb-item active">طلبات التبرع</li>
+              <li class="breadcrumb-item"><a href="{{url(route('home'))}}">Main</a></li>
+              <li class="breadcrumb-item active">Donation Requests</li>
             </ol>
           </div>
         </div>
@@ -42,16 +42,16 @@
               <thead>
               <tr>
                 <th>#</th>
-                <th>الاسم</th>
-                <th>العمر</th>
-                <th>نوع فصيلة الدم</th>
-                <th>عدد اكياس الدم</th>
-                <th>اسم المستشفي</th>
-                <th>المكان</th>
-                <th>المدينة</th>
-                <th>رقم الهاتف</th>
-                <th>ملاحظات</th>
-                <th>العميل</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Blood_type</th>
+                <th>Number of Blood_types</th>
+                <th>Name of Hospitel</th>
+                <th>Place</th>
+                <th>City</th>
+                <th>phone</th>
+                <th>Notes</th>
+                <th>Client</th>
                 <th class="text-center">حذف</th>
               </tr>
               </tehead>

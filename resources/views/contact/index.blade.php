@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>الشكاوي والاقتراحات</h1>
+            <h1>Contacte us </h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{url(route('home'))}}">الرئيسية</a></li>
-              <li class="breadcrumb-item active">الشكاوي والاقتراحات</li>
+              <li class="breadcrumb-item"><a href="{{url(route('home'))}}">Main</a></li>
+              <li class="breadcrumb-item active">Contacte us</li>
             </ol>
           </div>
         </div>
@@ -38,12 +38,12 @@
               <thead>
               <tr>
                 <th>#</th>
-                <th>الاسم</th>
-                <th>البريد الالكتروني</th>
-                <th>رقم الهاتف</th>
-                <th>عنوان الرسالة</th>
-                <th>محتوي الرسالة</th>
-                <th class="text-center">حذف</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Title</th>
+                <th>Message</th>
+                <th class="text-center">Delete</th>
               </tr>
               </tehead>
               <tbody>

@@ -208,7 +208,7 @@
 
            <!-- اعدادت التطبيق -->
            <li class="nav-item has-treeview">
-            <a href="{{url(route('settings.index'))}}"class="nav-link">
+            <a href="#"class="nav-link">
               <i class="nav-icon fas fa-cogs"></i>
               <p>
                
@@ -217,7 +217,7 @@
             </a>
           </li>
 
-          <!-- اعدادت التطبيق -->
+          <!-- تغير كلمة السر -->
           <li class="nav-item has-treeview">
             <a href="{{url(route('getChangePassword'))}}"class="nav-link">
               <i class="nav-icon fas fa-key"></i>

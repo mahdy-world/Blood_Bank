@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>بنك الدم</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url(route('home')) }}">
                 <img src="{{asset('Admin_Lte/img/logo.png')}}"
                         alt="AdminLTE Logo" 
                         width="40px"
@@ -74,5 +74,8 @@
             @yield('content')
         </main>
     </div>
+
+    <h6 align="center" >By:  <a href="https://www.facebook.com/ahmed.elmahde.9">Ahmed Elmahdy</a> </h6>
+   
 </body>
 </html>

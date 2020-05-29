@@ -2,7 +2,7 @@
 {!! Form::model($model ,[ 'action' => 'RoleController@store' ]) !!}
         
                       <div class="form-group"> 
-                        <label for="name">الاسم</label>
+                        <label for="name">Name</label>
                         {!! Form::text('name',null,[
                           'class' => 'form-control',
                         ]) !!}
@@ -10,7 +10,7 @@
 
 
                       <div class="form-group"> 
-                        <label for="display_name">الاسم المعروض</label>
+                        <label for="display_name">Name viwer</label>
                         {!! Form::text('display_name',null,[
                           'class' => 'form-control',
                         ]) !!}
@@ -24,7 +24,7 @@
                       </div>
 
                       <div class="form-group"> 
-                        <label for="name">الصلاحيات</label>
+                        <label for="name">Permissions</label>
                         <div class="row">
 
                             @foreach($per->all() as $permission)
@@ -51,7 +51,7 @@
                       </div>
                 
                       <div class="form-group"> 
-                          <button class="btn btn-success" type="submit">حفظ</button>
+                          <button class="btn btn-success" type="submit">Save</button>
                           
                       </div>
                 

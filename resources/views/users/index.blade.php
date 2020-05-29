@@ -44,11 +44,11 @@
               <thead>
               <tr>
                 <th>#</th>
-                <th>اسم </th>
-                <th>البريد الالكتروني </th>
-                <th>رتب المستخدم</th>
-                <th class="text-center">تعديل</th>
-                <th class="text-center">حذف</th>
+                <th>Name </th>
+                <th>Email </th>
+                <th>Roles</th>
+                <th class="text-center">Edit</th>
+                <th class="text-center">Delete</th>
               </tr>
               </tehead>
               <tbody>

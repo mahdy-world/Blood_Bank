@@ -14,12 +14,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>المقالات</h1>
+            <h1>Posts</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{url(route('home'))}}">الرئيسية</a></li>
-              <li class="breadcrumb-item active">المقالات</li>
+              <li class="breadcrumb-item"><a href="{{url(route('home'))}}">Main</a></li>
+              <li class="breadcrumb-item active">Posts</li>
             </ol>
           </div>
         </div>
@@ -42,12 +42,12 @@
               <thead>
               <tr>
                 <th>#</th>
-                <th>عنوان المقال</th>
-                <th>محتوي المقال</th>
-                <th>صورة المحتوي</th>
-                <th>القسم</th>
-                <th class="text-center">تعديل</th>
-                <th class="text-center">حذف</th>
+                <th>Title</th>
+                <th>Contant</th>
+                <th>Image</th>
+                <th>Category</th>
+                <th class="text-center">Edit</th>
+                <th class="text-center">Delete</th>
               </tr>
               </tehead>
               <tbody>
