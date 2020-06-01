@@ -45,6 +45,18 @@ Route::delete('client/{id}', 'ClientController@destroy')->name('client.destroy')
 });
 
 
+Route::group(['namespace' => 'Front'], function () {
+
+    Route::get('blood','FrontController@home');
+    Route::get('aboute', 'FrontController@aboute');
+    Route::get('posts','FrontController@posts');
+    Route::get('signup','AuthController@signup');
+    Route::get('contactUs' , 'FrontController@contactUs');
+    Route::post('postContact', 'FrontController@postContact')->name('welcome.postContact');
+    
+});
+
+
 
 
 
