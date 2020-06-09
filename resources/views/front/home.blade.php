@@ -1,4 +1,6 @@
 @extends('front\master')
+@inject('bloodType', 'App\models\BloodType')
+
 @section('title')
 <title>بنك الدم الرئيسية </title>
 @endsection
@@ -23,23 +25,23 @@
 </section>
 
    <!-- articles -->
-<section id="articles">
-<h2 class="articles-head">المقالات </h2>
-<div class="container custom" style="direction: ltr">
-  <div class="owl-carousel owl-theme" id="owl-articles">
-   
-   @foreach($posts as $post)
-    <div class="item">
-      <div class="card" style="width: 22rem;">
-        <i onclick="toggleFavourite(this)"  class="fab fa-gratipay first-heart"></i>
-        <img class="card-img-top" src="{{$post->image}}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">{{$post->title}} </h5>
-          <p class="card-text">{{$post->content}}
-            </p>
-          <a href="{{url('posts/'.$post->id)}}"><button class="btn details-btn">التفاصيل </button></a>
-        </div>
-      </div>
+   <section id="articles">
+  <h2 class="articles-head">المقالات </h2>
+  <div class="container custom" style="direction: ltr">
+    <div class="owl-carousel owl-theme" id="owl-articles">
+
+      @foreach($posts as $post)
+        <div class="item">
+          <div class="card" style="width: 22rem;">
+            <i onclick="toggleFavourite(this)"  class="fab fa-gratipay first-heart"></i>
+            <img class="card-img-top" src="{{$post->image}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{$post->title}} </h5>
+              <p class="card-text">{{$post->content}}
+                </p>
+              <a href="{{url('post/'.$post->id)}}"><button class="btn details-btn">التفاصيل </button></a>
+            </div>
+          </div>
 
 
     </div>
@@ -48,152 +50,6 @@
     
   </div>
 
-</div>
-</section>
-<h2 class="donations-head horizntal-line">طلبات التبرع </h2>
-
- <!-- Donations offers  -->
-<section id="donations">
-<div class="container custom-position">
-<div class="row  dropdown">
-<div class="col-md-5">
-    <select class="custom-select">
-        <option selected>اختر فصيلة الدم </option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-</div>
-
-<div class="col-md-5">
-    <select class="custom-select">
-        <option selected>اختر المدينة </option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-</div>
-<div class="col-md-2 search">
-<div class="circle search-icon"><i class="fas fa-search search-icon"></i></div>
-
-</div>
-
-</div>
-<div class="row background-div ">
-<div class="col-lg-2">
-<div class="blood-type border-circle">
-<div class="blood-txt">
-  AB+
-</div>
-
-</div>
-</div>
-<div class="col-lg-7">
-<ul class="order-details">
-  <li class="cutom-display">   اسم الحالة:</li>
-  <span class="cutom-display">محمد محروس</span> <br>
-
-  <li class="cutom-display custom-padding" >  مستشفي:</li>
-  <span class="cutom-display custom-padding">طوارئ المنصورة</span> <br>
-  <div class="adjust-position">  <li class="cutom-display ">  المدينة:</li>
-    <span class="cutom-display ">المنصورة</span></div>
-
-
-</ul>
-
-</div>
-<div class="col-lg-3">
-    <a href="donation-details.html"><button class="btn more2-btn">التفاصيل </button></a>
-</div>
-
-</div>
-<div class="row background-div ">
-    <div class="col-lg-2">
-    <div class="blood-type border-circle">
-    <div class="blood-txt">
-      AB+
-    </div>
-
-    </div>
-    </div>
-    <div class="col-lg-7">
-    <ul class="order-details">
-      <li class="cutom-display">   اسم الحالة:</li>
-      <span class="cutom-display">محمد محروس</span> <br>
-
-      <li class="cutom-display custom-padding" >  مستشفي:</li>
-      <span class="cutom-display custom-padding">طوارئ المنصورة</span> <br>
-      <div class="adjust-position">  <li class="cutom-display ">  المدينة:</li>
-        <span class="cutom-display ">المنصورة</span></div>
-
-
-    </ul>
-
-    </div>
-    <div class="col-lg-3">
-        <a href="#"><button class="btn more2-btn">التفاصيل </button></a>
-    </div>
-
-    </div>
-    <div class="row background-div ">
-        <div class="col-lg-2">
-        <div class="blood-type border-circle">
-        <div class="blood-txt">
-          AB+
-        </div>
-
-        </div>
-        </div>
-        <div class="col-lg-7">
-        <ul class="order-details">
-          <li class="cutom-display">   اسم الحالة:</li>
-          <span class="cutom-display">محمد محروس</span> <br>
-
-          <li class="cutom-display custom-padding" >  مستشفي:</li>
-          <span class="cutom-display custom-padding">طوارئ المنصورة</span> <br>
-          <div class="adjust-position">  <li class="cutom-display ">  المدينة:</li>
-            <span class="cutom-display ">المنصورة</span></div>
-
-
-        </ul>
-
-        </div>
-        <div class="col-lg-3">
-            <a href="#"><button class="btn more2-btn">التفاصيل </button></a>
-        </div>
-
-        </div>
-
-
-        <div class="row background-div ">
-            <div class="col-lg-2">
-            <div class="blood-type border-circle">
-            <div class="blood-txt">
-              AB+
-            </div>
-
-            </div>
-            </div>
-            <div class="col-lg-7">
-            <ul class="order-details">
-              <li class="cutom-display">   اسم الحالة:</li>
-              <span class="cutom-display">محمد محروس</span> <br>
-
-              <li class="cutom-display custom-padding" >  مستشفي:</li>
-              <span class="cutom-display custom-padding">طوارئ المنصورة</span> <br>
-              <div class="adjust-position">  <li class="cutom-display ">  المدينة:</li>
-                <span class="cutom-display ">المنصورة</span></div>
-
-
-            </ul>
-
-            </div>
-            <div class="col-lg-3">
-                <a href="#"><button class="btn more2-btn">التفاصيل </button></a>
-            </div>
-
-            </div>
-            <a href="donations.html"><button class="btn more3-btn">المزيد  </button></a>
 </div>
 </section>
 

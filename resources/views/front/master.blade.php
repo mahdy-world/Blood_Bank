@@ -91,10 +91,19 @@
                     <a class="nav-link border-left" href="{{url('contactUs')}}">اتصل بنا </a>
                   </li>
           </ul>
-          <span class="navbar-text">
-           <a  class="new-account"href="signup.html">انشاء حــساب جديد</a>
-           <a href="login.html"><button class="btn login-btn shadow">دخول</button></a>
+          @if(auth()->guard('clients')->check())
+            <span class="navbar-text">
+                <a href="{{url('client/donationRequest')}}"><button class="btn login-btn shadow">طلب تبرع</button></a>
+            </span>
+            <span class="navbar-text" style="margin-right: 15px">
+                <a href="{{url('client/logout')}}"><button class="btn login-btn shadow">الخروج</button></a>
+            </span>
+        @else
+            <span class="navbar-text">
+           <a class="new-account" href="{{url('showsignup')}}">انشاء حــساب جديد</a>
+           <a href="{{url('showlogin')}}"><button class="btn login-btn shadow">دخول</button></a>
           </span>
+        @endif
         </div>
       </nav>
 
@@ -111,12 +120,12 @@
       </div>
       <div class="col-md-4">
         <ul class="footer-list">
-          <a href="#"><li> الرئيسيه</li></a>
+          <a href="{{url('posts')}}"><li> الرئيسيه</li></a>
             <a href="#"><li> عن بنك الدم </li></a>
-            <a href="#"> <li> المقالات </li></a>
+            <a href="{{url('posts')}}"> <li> المقالات </li></a>
             <a href="#"><li> طلبات التبرع </li></a>
-            <a href="#"> <li> من نحن </li></a>
-            <a href="#">  <li> اتصل بنا </li></a>
+            <a href="{{url('aboute')}}"> <li> من نحن </li></a>
+            <a href="{{url('contactUs')}}">  <li> اتصل بنا </li></a>
 
         </ul>
         </div>
@@ -136,10 +145,13 @@
 <div class="row">
 <div class="col-md-4">
   <div class="social-media">
- <i class="fab fa-facebook-f hvr-float"></i>
-    <i class="fab fa-instagram hvr-float"></i>
-    <i class="fab fa-twitter hvr-float"></i>
-    <i class="fab fa-whatsapp hvr-float"></i>
+      
+
+              <a href="{{$settings->facebook}}" target="blank"> <i class="fab fa-facebook-f hvr-float"></i> </a>
+              <a href="{{$settings->instagram}}" target="blank"> <i class="fab fa-instagram hvr-float"></i></a>
+              <a href="{{$settings->twitter}}" target="blank"><i class="fab fa-twitter hvr-float"></i></a>
+              <a href="{{$settings->whats_app}}" target="blank"><i class="fab fa-whatsapp hvr-float"></i> </a>
+
 
  </div>
 

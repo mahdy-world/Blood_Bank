@@ -32,6 +32,7 @@ Route::resource('post','PostController');
 Route::resource('client','ClientController');
 Route::resource('role', 'RoleController');
 Route::resource('users', 'UserController');
+Route::resource('setting', 'SettingController');
 
 
 Route::post('changePassword', 'UserController@changePassword')->name('changePassword');
@@ -47,12 +48,21 @@ Route::delete('client/{id}', 'ClientController@destroy')->name('client.destroy')
 
 Route::group(['namespace' => 'Front'], function () {
 
-    Route::get('blood','FrontController@home');
+    Route::get('blood','FrontController@home')->name('blood');
     Route::get('aboute', 'FrontController@aboute');
     Route::get('posts','FrontController@posts');
-    Route::get('signup','AuthController@signup');
+    Route::get('post/{id}', 'FrontController@post')->name('post');
+    
     Route::get('contactUs' , 'FrontController@contactUs');
     Route::post('postContact', 'FrontController@postContact')->name('welcome.postContact');
+
+
+    // for auth
+    Route::get('signup','AuthController@signup')->name('signup');
+    Route::post('register', 'FrontController@register')->name('register');
+
+    Route::get('showlogin','FrontController@showlogin')->name('showlogin');
+    Route::post('cheacklogin','FrontController@cheacklogin')->name('cheacklogin');
     
 });
 
