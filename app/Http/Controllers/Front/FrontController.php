@@ -34,7 +34,7 @@ class FrontController extends Controller
     {    $settings = Setting::first();
         $posts = Post::paginate(12);
      //$fav=Client::with('posts')->where('client_id',auth('client')->user()->id)->where('post_id',1);
-        return view('Front.posts');
+        return view('Front.posts',compact('settings','posts'));
     }
 
     public function fav(Request $request)

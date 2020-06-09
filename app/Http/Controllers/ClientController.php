@@ -41,6 +41,9 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $records = Client::findOrFail($id);
+        $records->delete();
+        flash()->success('تم الحذف بنجاح');
+         return back();
     }
 }
